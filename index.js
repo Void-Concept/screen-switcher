@@ -24,7 +24,7 @@ function switchScreen(screen) {
 
 setInterval(() => {
     const mousePosition = getMousePos();
-    let screen = 0;
+    let screen = currentScreen;
 
     screens.forEach(({ coordinates }, index) => {
         if (withinRange(mousePosition.x, coordinates.x) && withinRange(mousePosition.y, coordinates.y)) {
