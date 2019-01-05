@@ -1,26 +1,11 @@
 const { getMousePos, keyToggle } = require('robotjs');
 
-const screens = [{
-    coordinates: {
-        x: [-2560, -1],
-        y: [0, 1439],
-    }
-}, {
-    coordinates: {
-        x: [0, 2559],
-        y: [0, 1439],
-    }
-}, {
-    coordinates: {
-        x: [2560, 5119],
-        y: [0, 1439],
-    }
-}];
+const screens = require("./screens.json");
 
 let currentScreen = 0;
 
 function withinRange(position, coordinates) {
-    return coordinates[0] < position && position < coordinates[1];
+    return coordinates[0] <= position && position <= coordinates[1];
 }
 
 function switchScreen(screen) {
@@ -48,7 +33,7 @@ setInterval(() => {
     });
 
     if (screen !== currentScreen) {
-        console.log(`Switching from screen ${currentScreen} to ${screen}`)
+        console.log(`Switching from screen ${currentScreen} to ${screen}`);
 
         currentScreen = screen;
         switchScreen(currentScreen);
